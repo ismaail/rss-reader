@@ -22,29 +22,30 @@ import { HomeComponent } from './components/home/home.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    WebviewDirective
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (HttpLoaderFactory),
-        deps: [HttpClient]
-      }
-    })
-  ],
-  providers: [ElectronService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        WebviewDirective
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (HttpLoaderFactory),
+                deps: [HttpClient]
+            }
+        })
+    ],
+    providers: [ElectronService],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -8,19 +8,19 @@ import * as childProcess from 'child_process';
 @Injectable()
 export class ElectronService {
 
-  ipcRenderer: typeof ipcRenderer;
-  childProcess: typeof childProcess;
+    ipcRenderer: typeof ipcRenderer;
+    childProcess: typeof childProcess;
 
-  constructor() {
-    // Conditional imports
-    if (this.isElectron()) {
-      this.ipcRenderer = window.require('electron').ipcRenderer;
-      this.childProcess = window.require('child_process');
+    constructor() {
+        // Conditional imports
+        if (this.isElectron()) {
+            this.ipcRenderer = window.require('electron').ipcRenderer;
+            this.childProcess = window.require('child_process');
+        }
     }
-  }
 
-  isElectron = () => {
-    return window && window.process && window.process.type;
-  }
+    isElectron = () => {
+        return window && window.process && window.process.type;
+    };
 
 }
