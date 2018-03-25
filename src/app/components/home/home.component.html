@@ -2,4 +2,14 @@
     <h1 class="title">
         {{ 'PAGES.HOME.TITLE' | translate }}
     </h1>
+    <ul *ngIf="rss" class="list-unstyled">
+        <li><strong>Title:</strong> {{ rss.title }}</li>
+        <li><strong>Description:</strong> {{ rss.description }}</li>
+        <li><strong>Url:</strong> {{ rss.url }}</li>
+        <li>
+            <ul *ngFor="let item of rss.items">
+                <li class="link" (click)="open(item.url)">{{ item.title }}</li>
+            </ul>
+        </li>
+    </ul>
 </div>
