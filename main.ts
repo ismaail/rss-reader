@@ -24,6 +24,7 @@ function createWindow() {
         width: size.width,
         height: size.height,
         webPreferences: {webSecurity: false},
+        icon: "src/assets/images/favicon.png",
     });
 
     if (serve) {
