@@ -1,0 +1,17 @@
+{
+  "name": "rss-reader",
+  "description": "RSS Reader",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0"
+  }
+}
