@@ -23,6 +23,7 @@ function createWindow() {
         y: 0,
         width: size.width,
         height: size.height,
+        webPreferences: {webSecurity: false},
     });
 
     if (serve) {
