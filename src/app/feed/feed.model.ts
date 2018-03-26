@@ -1,4 +1,4 @@
-export class RSS {
+export class Feed {
     title: string;
     description: string;
     url: string;

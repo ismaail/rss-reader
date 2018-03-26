@@ -1,9 +1,9 @@
 import "rxjs/add/operator/map";
+import { Feed } from "../../feed/feed.model";
 import { Component, OnInit } from '@angular/core';
-
-import { RSS } from "../../feed/rss.model";
 import { FeedParser } from "../../feed/feed-parser";
 import { FeedService } from "../../feed/feed.service";
+import { Subscription } from '../../subscription/subscription.model';
 
 const { shell } = window.require('electron');
 
@@ -14,7 +14,7 @@ const { shell } = window.require('electron');
     providers: [FeedService],
 })
 export class HomeComponent implements OnInit {
-    rss: RSS = null;
+    feed: Feed = null;
 
     constructor(private feedService: FeedService) {
     }
