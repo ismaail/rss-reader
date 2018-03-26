@@ -15,17 +15,16 @@ const { shell } = window.require('electron');
 })
 export class HomeComponent implements OnInit {
     feed: Feed = null;
+    subscriptions: Subscription[] = [];
 
     constructor(private feedService: FeedService) {
     }
 
     ngOnInit() {
-        const feedUrl = "https://feeds.feedburner.com/Grafikart";
-
-        this.feedService.get(feedUrl).subscribe((xml) => {
-            const parser = new FeedParser();
-            this.rss = parser.parse(xml);
-        });
+        this.subscriptions = [
+            Object.assign(new Subscription(), { id: 1, name: "PHP Planet", url: "http://www.planet-php.org/rss/", count: 0 }),
+            Object.assign(new Subscription(), { id:2, name: "Grafikart", url: "https://feeds.feedburner.com/Grafikart", count: 0}),
+        ];
     }
 
     open(url: string) {
