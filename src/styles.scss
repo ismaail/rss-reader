@@ -1,7 +1,11 @@
 @import "../node_modules/compass-mixins/lib/compass";
 @import "../node_modules/compass-mixins/lib/animate";
 
+@import "./assets/scss/modules/colors";
+
 @import "./assets/vendor/bootstrap/scss/bootstrap";
+
+@import "./assets/scss/modules/fonts";
 
 html {
   height: 100%;
@@ -9,4 +13,7 @@ html {
 
 body {
   height: 100vh;
+  font-size: 13px;
+  font-family: sans-serif;
+	letter-spacing: 1px;
 }

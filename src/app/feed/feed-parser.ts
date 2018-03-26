@@ -1,4 +1,4 @@
-import { RSS } from "./rss.model";
+import { Feed } from "./feed.model";
 
 const xml2js = require("xml2js");
 const util = require("util");
@@ -8,10 +8,10 @@ export class FeedParser {
      * Parse XML text to RSS Object
      *
      * @param {string} xml
-     * @returns {RSS}
+     * @returns {Feed}
      */
     parse(xml: string) {
-        let rss = new RSS();
+        let rss = new Feed();
         const parser = new xml2js.Parser({trim: false, normalize: true, mergeAttrs: true});
 
         parser.parseString(xml, function (err, result) {

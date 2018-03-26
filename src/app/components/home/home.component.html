@@ -1,15 +1,19 @@
-<div class="container">
-    <h1 class="title">
-        {{ 'PAGES.HOME.TITLE' | translate }}
-    </h1>
-    <ul *ngIf="rss" class="list-unstyled">
-        <li><strong>Title:</strong> {{ rss.title }}</li>
-        <li><strong>Description:</strong> {{ rss.description }}</li>
-        <li><strong>Url:</strong> {{ rss.url }}</li>
-        <li>
-            <ul *ngFor="let item of rss.items">
-                <li class="link" (click)="open(item.url)">{{ item.title }}</li>
+<div class="container-fluid d-flex page-container px-0">
+    <div class="row w-100 mx-0">
+        <aside class="col-3 px-3 py-2">
+            <strong>Feeds</strong>
+            <ul class="list-unstyled pl-1 subscriptions-list">
+                <li *ngFor="let subscription of subscriptions" class="mb-1" (click)="onSubscriptionClick(subscription)">
+                    <!--<img src="https://www.google.com/s2/favicons?domain={{ subscription.url }}&alt=feed" alt="" class="pr-2">-->
+                    <i class="icon icon-rss"></i>
+                    {{ subscription.name }}
+                </li>
             </ul>
-        </li>
-    </ul>
+        </aside>
+        <div class="col-9 px-3 py-2">
+            <ul class="list-unstyled" *ngIf="feed">
+                <li *ngFor="let item of feed.items">{{ item.title }}</li>
+            </ul>
+        </div>
+    </div>
 </div>
