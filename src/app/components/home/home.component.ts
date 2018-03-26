@@ -32,4 +32,12 @@ export class HomeComponent implements OnInit {
         shell.openExternal(url);
     }
 
+    onSubscriptionClick(subscription: Subscription) {
+        this.feed = null;
+
+        this.feedService.get(subscription.url).subscribe((xml) => {
+            const parser = new FeedParser();
+            this.feed = parser.parse(xml);
+        });
+    }
 }
