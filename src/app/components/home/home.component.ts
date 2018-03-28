@@ -3,6 +3,7 @@ import { Feed } from "../../feed/feed.model";
 import { Component, OnInit } from '@angular/core';
 import { FeedParser } from "../../feed/feed-parser";
 import { FeedService } from "../../feed/feed.service";
+import { ModalService } from '../modal/modal.service';
 import { Subscription } from '../../subscription/subscription.model';
 
 const { shell } = window.require('electron');
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
     feed: Feed = null;
     subscriptions: Subscription[] = [];
 
-    constructor(private feedService: FeedService) {
+    constructor(private feedService: FeedService, private modalService: ModalService) {
     }
 
     ngOnInit() {
@@ -39,5 +40,14 @@ export class HomeComponent implements OnInit {
             const parser = new FeedParser();
             this.feed = parser.parse(xml);
         });
+    }
+
+    /**
+     * Open Add New Feed Modal
+     *
+     * @param {string} id
+     */
+    onAddFeedClick(id: string){
+        this.modalService.open(id);
     }
 }
