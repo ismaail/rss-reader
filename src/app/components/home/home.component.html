@@ -1,6 +1,14 @@
+<modal id="add-new-feed-modal" [title]="'Add Feed'">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cumque dolores nam necessitatibus nemo placeat quae
+       qui quos similique temporibus!</p>
+</modal>
+
 <div class="container-fluid d-flex page-container px-0">
     <div class="row w-100 mx-0">
         <aside class="col-3 px-3 py-2">
+            <div class="mb-3">
+                <button class="btn btn-primary btn-block rounded-0" (click)="onAddFeedClick('add-new-feed-modal')">Add New Feed</button>
+            </div>
             <strong>Feeds</strong>
             <ul class="list-unstyled pl-1 subscriptions-list">
                 <li *ngFor="let subscription of subscriptions" class="mb-1" (click)="onSubscriptionClick(subscription)">
