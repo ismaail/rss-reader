@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalService } from './components/modal/modal.service';
+import { StorageService } from './storage/storage.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
             }
         })
     ],
-    providers: [ElectronService, ModalService],
+    providers: [ElectronService, ModalService, StorageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
