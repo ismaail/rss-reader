@@ -3,8 +3,8 @@ import { Feed } from "../../feed/feed.model";
 import { Component, OnInit } from "@angular/core";
 import { FeedParser } from "../../feed/feed-parser";
 import { FeedService } from "../../feed/feed.service";
-import { Subscription, Subscription } from '../../subscription/subscription.model';
 import { ModalService } from "../modal/modal.service";
+import { Subscription } from "../../subscription/subscription.model";
 import { SubscriptionService } from "../../subscription/subscription.service";
 
 const { shell } = window.require("electron");
