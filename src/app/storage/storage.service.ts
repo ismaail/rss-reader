@@ -33,8 +33,8 @@ export class StorageService {
      *
      * @returns {Observable}
      */
-    all(): Observable {
-        const sourceFunction: Function = Observable. bindNodeCallback(this.find);
+    all(): Observable<any[]> {
+        const sourceFunction: Function = Observable.bindNodeCallback(this.find);
         return sourceFunction({});
     }
 }
