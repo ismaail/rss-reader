@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FeedParser } from "../../feed/feed-parser";
 import { FeedService } from "../../feed/feed.service";
 import { ModalService } from '../modal/modal.service';
-import { Subscription } from '../../subscription/subscription.model';
+import { Subscription, Subscription } from '../../subscription/subscription.model';
+import { SubscriptionService } from '../../subscription/subscription.service';
 
 const { shell } = window.require('electron');
 
@@ -12,27 +13,51 @@ const { shell } = window.require('electron');
     selector: "app-home",
     templateUrl: "./home.component.html",
     styleUrls: ["./home.component.scss"],
-    providers: [FeedService],
+    providers: [FeedService, SubscriptionService],
 })
 export class HomeComponent implements OnInit {
     feed: Feed = null;
     subscriptions: Subscription[] = [];
 
-    constructor(private feedService: FeedService, private modalService: ModalService) {
+    /**
+     * HomeComponent Class constructor
+     *
+     * @param {FeedService} feedService
+     * @param {ModalService} modalService
+     * @param {SubscriptionService} subscriptionService
+     */
+    constructor(
+        private feedService: FeedService,
+        private modalService: ModalService,
+        private subscriptionService: SubscriptionService) {
     }
 
+    /**
+     * Component OnInit
+     */
     ngOnInit() {
-        this.subscriptions = [
-            Object.assign(new Subscription(), { id: 1, name: "PHP Planet", url: "http://www.planet-php.org/rss/", count: 0 }),
-            Object.assign(new Subscription(), { id:2, name: "Grafikart", url: "https://feeds.feedburner.com/Grafikart", count: 0}),
-        ];
+        this.subscriptionService.all()
+            .subscribe(
+                (subscriptions: Subscription[]) => {
+                    this.subscriptions = subscriptions;
+                },
+                (err) => console.error("Error loading subscription data!", err)
+            );
     }
 
+    /**
+     * Open url in the external Browser.
+     *
+     * @param {string} url
+     */
     open(url: string) {
         console.log('open', url);
         shell.openExternal(url);
     }
 
+    /**
+     * @param {Subscription} subscription
+     */
     onSubscriptionClick(subscription: Subscription) {
         this.feed = null;
 
