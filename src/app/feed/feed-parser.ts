@@ -36,11 +36,11 @@ export class FeedParser {
             }
 
             if (channel.image) {
-                rss.image = channel.image[0].url
+                rss.image = channel.image[0].url;
             }
 
             if (!rss.image && channel["itunes:image"]) {
-                rss.image = channel['itunes:image'][0].href
+                rss.image = channel["itunes:image"][0].href;
             }
 
             if (channel.item) {
@@ -50,24 +50,24 @@ export class FeedParser {
                 }
 
                 items.forEach(function (val) {
-                    let obj:any = {};
-                    obj.title = !util.isNullOrUndefined(val.title) ? val.title[0] : '';
-                    obj.description = !util.isNullOrUndefined(val.description) ? val.description[0] : '';
-                    obj.url = obj.link = !util.isNullOrUndefined(val.link) ? val.link[0] : '';
+                    let obj: any = {};
+                    obj.title = !util.isNullOrUndefined(val.title) ? val.title[0] : "";
+                    obj.description = !util.isNullOrUndefined(val.description) ? val.description[0] : "";
+                    obj.url = obj.link = !util.isNullOrUndefined(val.link) ? val.link[0] : "";
 
                     if (val.pubDate) {
                         //lets try basis js date parsing for now
                         obj.created = Date.parse(val.pubDate[0]);
                     }
 
-                    if (val['media:content']) {
+                    if (val["media:content"]) {
                         obj.media = val.media || {};
-                        obj.media.content = val['media:content'];
+                        obj.media.content = val["media:content"];
                     }
 
-                    if (val['media:thumbnail']) {
+                    if (val["media:thumbnail"]) {
                         obj.media = val.media || {};
-                        obj.media.thumbnail = val['media:thumbnail'];
+                        obj.media.thumbnail = val["media:thumbnail"];
                     }
 
                     rss.items.push(obj);

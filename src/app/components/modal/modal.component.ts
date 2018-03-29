@@ -1,18 +1,18 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, OnDestroy } from "@angular/core";
 
-import { ModalService } from './modal.service';
+import { ModalService } from "./modal.service";
 
 @Component({
     moduleId: module.id.toString(),
-    selector: 'modal',
+    selector: "modal",
     templateUrl: "./modal.component.html",
 })
 
 export class ModalComponent implements OnInit, OnDestroy {
     @Input() id: string = null;
-    @Input() title: string = 'Modal title';
+    @Input() title: string = "Modal title";
     private element: Element;
-    private body: HTMLElement = document.querySelector('body');
+    private body: HTMLElement = document.querySelector("body");
 
     /**
      * ModalComponent Class constructor
@@ -29,7 +29,7 @@ export class ModalComponent implements OnInit, OnDestroy {
      */
     ngOnInit(): void {
         // Ensure id attribute exists
-        if (! this.id) {
+        if (!this.id) {
             throw new Error("modal must have an id");
         }
 

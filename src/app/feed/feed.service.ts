@@ -18,7 +18,7 @@ export class FeedService {
      * @returns {Observable<string>}
      */
     get(url: string) {
-        return this.http.request('get', url, {
+        return this.http.request("get", url, {
             responseType: "text"
         });
     }

@@ -2,7 +2,7 @@ import * as Datastore from "nedb";
 import { Observable } from "rxjs"; // Using rxjs/Observable throws error: bindNodeCallback is not a function.
 import { Injectable } from "@angular/core";
 
-const { remote } = window.require('electron');
+const { remote } = window.require("electron");
 const app = remote.app;
 
 @Injectable()
@@ -25,7 +25,7 @@ export class StorageService {
      * StorageService Class constructor
      */
     constructor() {
-        this.db = new Datastore({ filename: this.path, autoload: true });
+        this.db = new Datastore({filename: this.path, autoload: true});
     }
 
     /**

@@ -1,13 +1,13 @@
 import "rxjs/add/operator/map";
 import { Feed } from "../../feed/feed.model";
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { FeedParser } from "../../feed/feed-parser";
 import { FeedService } from "../../feed/feed.service";
-import { ModalService } from '../modal/modal.service';
 import { Subscription, Subscription } from '../../subscription/subscription.model';
-import { SubscriptionService } from '../../subscription/subscription.service';
+import { ModalService } from "../modal/modal.service";
+import { SubscriptionService } from "../../subscription/subscription.service";
 
-const { shell } = window.require('electron');
+const { shell } = window.require("electron");
 
 @Component({
     selector: "app-home",
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
      * @param {string} url
      */
     open(url: string) {
-        console.log('open', url);
+        console.log("open", url);
         shell.openExternal(url);
     }
 
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
      *
      * @param {string} id
      */
-    onAddFeedClick(id: string){
+    onAddFeedClick(id: string) {
         this.modalService.open(id);
     }
 }

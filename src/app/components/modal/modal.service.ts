@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { ModalComponent } from './modal.component';
+import { Injectable } from "@angular/core";
+import { ModalComponent } from "./modal.component";
 
 @Injectable()
 export class ModalService {
@@ -46,7 +46,7 @@ export class ModalService {
     open(id: string): void {
         let modal = this.find(id);
 
-        if (! modal) {
+        if (!modal) {
             return;
         }
 
@@ -61,7 +61,7 @@ export class ModalService {
     remove(id: string): void {
         let index = this.findIndex(id);
 
-        if (! index) {
+        if (!index) {
             return;
         }
 
@@ -76,7 +76,7 @@ export class ModalService {
     close(id: string): void {
         let modal = this.find(id);
 
-        if (! modal) {
+        if (!modal) {
             return;
         }
 
